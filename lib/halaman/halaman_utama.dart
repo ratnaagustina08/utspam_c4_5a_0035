@@ -179,59 +179,41 @@ class _HalamanUtamaState extends State<HalamanUtama> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.3),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: const Icon(
-                      Icons.person_rounded,
-                      color: Colors.white,
-                      size: 28,
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Halo,',
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          color: Colors.white.withOpacity(0.9),
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      Text(
-                        _penggunaAktif?.namaLengkap ?? 'Pengguna',
-                        style: GoogleFonts.poppins(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
               Container(
+                padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.3),
                   borderRadius: BorderRadius.circular(16),
                 ),
-                child: IconButton(
-                  icon: const Icon(
-                    Icons.notifications_rounded,
-                    color: Colors.white,
-                    size: 28,
-                  ),
-                  onPressed: () {},
+                child: const Icon(
+                  Icons.person_rounded,
+                  color: Colors.white,
+                  size: 28,
                 ),
+              ),
+              const SizedBox(width: 16),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Halo,',
+                    style: GoogleFonts.poppins(
+                      fontSize: 14,
+                      color: Colors.white.withOpacity(0.9),
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  Text(
+                    _penggunaAktif?.namaLengkap ?? 'Pengguna',
+                    style: GoogleFonts.poppins(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -316,7 +298,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
             child: _buatKartuMenu(
               judul: 'Beli Obat',
               ikon: Icons.shopping_cart_rounded,
-              warna: Colors.pink[400]!,
+              warna: Colors.pink[500]!,
               onTap: () {
                 Navigator.push(
                   context,
@@ -348,7 +330,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
             child: _buatKartuMenu(
               judul: 'Profil',
               ikon: Icons.person_rounded,
-              warna: Colors.pink[600]!,
+              warna: Colors.pink[500]!,
               onTap: () {
                 Navigator.push(
                   context,
@@ -364,7 +346,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
             child: _buatKartuMenu(
               judul: 'Keluar',
               ikon: Icons.logout_rounded,
-              warna: Colors.pink[700]!,
+              warna: Colors.pink[500]!,
               onTap: _konfirmasiLogout,
             ),
           ),
@@ -391,13 +373,6 @@ class _HalamanUtamaState extends State<HalamanUtama> {
             colors: [warna, warna.withOpacity(0.8)],
           ),
           borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: warna.withOpacity(0.4),
-              blurRadius: 10,
-              offset: const Offset(0, 5),
-            ),
-          ],
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -456,15 +431,6 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                     color: dipilih ? Colors.transparent : Colors.pink[300]!,
                     width: 2,
                   ),
-                  boxShadow: dipilih
-                      ? [
-                          BoxShadow(
-                            color: Colors.pink[300]!.withOpacity(0.5),
-                            blurRadius: 10,
-                            offset: const Offset(0, 4),
-                          ),
-                        ]
-                      : null,
                 ),
                 child: Center(
                   child: Text(
@@ -519,13 +485,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.pink[100]!.withOpacity(0.5),
-              blurRadius: 15,
-              offset: const Offset(0, 8),
-            ),
-          ],
+          border: Border.all(color: Colors.pink[100]!, width: 1),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
