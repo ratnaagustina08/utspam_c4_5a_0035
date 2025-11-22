@@ -339,7 +339,6 @@ class _HalamanRegistrasiState extends State<HalamanRegistrasi> {
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
                             color: Colors.pink[800],
-                            decoration: TextDecoration.underline,
                           ),
                         ),
                       ),
