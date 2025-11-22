@@ -18,14 +18,22 @@ class HalamanUtama extends StatefulWidget {
 
 class _HalamanUtamaState extends State<HalamanUtama> {
   final _servicePenyimpanan = ServicePenyimpanan();
+  final _pencarianController = TextEditingController();
   Pengguna? _penggunaAktif;
   final List<Obat> _daftarObat = Obat.daftarObat();
   String _kategoriDipilih = 'Semua';
+  String _kataPencarian = '';
 
   @override
   void initState() {
     super.initState();
     _muatDataPengguna();
+  }
+
+  @override
+  void dispose() {
+    _pencarianController.dispose();
+    super.dispose();
   }
 
   Future<void> _muatDataPengguna() async {
@@ -36,12 +44,23 @@ class _HalamanUtamaState extends State<HalamanUtama> {
   }
 
   List<Obat> _dapatkanObatTerfilter() {
-    if (_kategoriDipilih == 'Semua') {
-      return _daftarObat;
+    var obatTerfilter = _daftarObat;
+    
+    if (_kategoriDipilih != 'Semua') {
+      obatTerfilter = obatTerfilter
+          .where((obat) => obat.kategori == _kategoriDipilih)
+          .toList();
     }
-    return _daftarObat
-        .where((obat) => obat.kategori == _kategoriDipilih)
-        .toList();
+    
+    if (_kataPencarian.isNotEmpty) {
+      obatTerfilter = obatTerfilter
+          .where((obat) =>
+              obat.namaObat.toLowerCase().contains(_kataPencarian.toLowerCase()) ||
+              obat.kategori.toLowerCase().contains(_kataPencarian.toLowerCase()))
+          .toList();
+    }
+    
+    return obatTerfilter;
   }
 
   Set<String> _dapatkanSemuaKategori() {
@@ -212,7 +231,6 @@ class _HalamanUtamaState extends State<HalamanUtama> {
           ),
           const SizedBox(height: 20),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(16),
@@ -224,20 +242,54 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                 ),
               ],
             ),
-            child: Row(
-              children: [
-                Icon(Icons.search_rounded, color: Colors.pink[400], size: 26),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Text(
-                    'Cari obat yang Anda butuhkan...',
-                    style: GoogleFonts.poppins(
-                      color: Colors.grey[500],
-                      fontSize: 15,
-                    ),
-                  ),
+            child: TextField(
+              controller: _pencarianController,
+              onChanged: (value) {
+                setState(() {
+                  _kataPencarian = value;
+                });
+              },
+              style: GoogleFonts.poppins(
+                fontSize: 15,
+                color: Colors.pink[900],
+              ),
+              decoration: InputDecoration(
+                hintText: 'Cari obat yang Anda butuhkan...',
+                hintStyle: GoogleFonts.poppins(
+                  color: Colors.grey[500],
+                  fontSize: 15,
                 ),
-              ],
+                prefixIcon: Icon(Icons.search_rounded, color: Colors.pink[400], size: 26),
+                suffixIcon: _kataPencarian.isNotEmpty
+                    ? IconButton(
+                        icon: Icon(Icons.clear_rounded, color: Colors.grey[600]),
+                        onPressed: () {
+                          setState(() {
+                            _pencarianController.clear();
+                            _kataPencarian = '';
+                          });
+                        },
+                      )
+                    : null,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: BorderSide.none,
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: BorderSide.none,
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                  borderSide: BorderSide(color: Colors.pink[400]!, width: 2),
+                ),
+                filled: true,
+                fillColor: Colors.white,
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 16,
+                ),
+              ),
             ),
           ),
         ],
