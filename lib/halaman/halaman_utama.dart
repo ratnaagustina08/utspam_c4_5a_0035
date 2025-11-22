@@ -45,21 +45,27 @@ class _HalamanUtamaState extends State<HalamanUtama> {
 
   List<Obat> _dapatkanObatTerfilter() {
     var obatTerfilter = _daftarObat;
-    
+
     if (_kategoriDipilih != 'Semua') {
       obatTerfilter = obatTerfilter
           .where((obat) => obat.kategori == _kategoriDipilih)
           .toList();
     }
-    
+
     if (_kataPencarian.isNotEmpty) {
       obatTerfilter = obatTerfilter
-          .where((obat) =>
-              obat.namaObat.toLowerCase().contains(_kataPencarian.toLowerCase()) ||
-              obat.kategori.toLowerCase().contains(_kataPencarian.toLowerCase()))
+          .where(
+            (obat) =>
+                obat.namaObat.toLowerCase().contains(
+                  _kataPencarian.toLowerCase(),
+                ) ||
+                obat.kategori.toLowerCase().contains(
+                  _kataPencarian.toLowerCase(),
+                ),
+          )
           .toList();
     }
-    
+
     return obatTerfilter;
   }
 
@@ -249,20 +255,24 @@ class _HalamanUtamaState extends State<HalamanUtama> {
                   _kataPencarian = value;
                 });
               },
-              style: GoogleFonts.poppins(
-                fontSize: 15,
-                color: Colors.pink[900],
-              ),
+              style: GoogleFonts.poppins(fontSize: 15, color: Colors.pink[900]),
               decoration: InputDecoration(
                 hintText: 'Cari obat yang Anda butuhkan...',
                 hintStyle: GoogleFonts.poppins(
                   color: Colors.grey[500],
                   fontSize: 15,
                 ),
-                prefixIcon: Icon(Icons.search_rounded, color: Colors.pink[400], size: 26),
+                prefixIcon: Icon(
+                  Icons.search_rounded,
+                  color: Colors.pink[400],
+                  size: 26,
+                ),
                 suffixIcon: _kataPencarian.isNotEmpty
                     ? IconButton(
-                        icon: Icon(Icons.clear_rounded, color: Colors.grey[600]),
+                        icon: Icon(
+                          Icons.clear_rounded,
+                          color: Colors.grey[600],
+                        ),
                         onPressed: () {
                           setState(() {
                             _pencarianController.clear();
