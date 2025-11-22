@@ -117,7 +117,7 @@ class _HalamanDetailPembelianState extends State<HalamanDetailPembelian> {
   @override
   Widget build(BuildContext context) {
     final formatter = NumberFormat('#,###', 'id_ID');
-    final formatTanggal = DateFormat('dd MMMM yyyy, HH:mm', 'id_ID');
+    final formatTanggal = DateFormat('dd MMMM yyyy, HH:mm');
 
     return Scaffold(
       body: Container(

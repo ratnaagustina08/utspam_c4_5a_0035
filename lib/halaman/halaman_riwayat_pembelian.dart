@@ -186,7 +186,7 @@ class _HalamanRiwayatPembelianState extends State<HalamanRiwayatPembelian> {
 
   Widget _buatKartuTransaksi(Transaksi transaksi) {
     final formatter = NumberFormat('#,###', 'id_ID');
-    final formatTanggal = DateFormat('dd MMM yyyy, HH:mm', 'id_ID');
+    final formatTanggal = DateFormat('dd MMM yyyy, HH:mm');
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
