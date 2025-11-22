@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import '../model/obat.dart';
 import '../model/transaksi.dart';
 import '../service/service_penyimpanan.dart';
+import '../widget/gambar_obat.dart';
 
 class HalamanFormulirPembelian extends StatefulWidget {
   final Obat? obat;
@@ -457,12 +458,28 @@ class _HalamanFormulirPembelianState extends State<HalamanFormulirPembelian> {
             items: Obat.daftarObat().map((obat) {
               return DropdownMenuItem<Obat>(
                 value: obat,
-                child: Text(
-                  '${obat.gambar} ${obat.namaObat}',
-                  style: GoogleFonts.poppins(
-                    color: Colors.pink[800],
-                    fontWeight: FontWeight.w500,
-                  ),
+                child: Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: GambarObat(
+                        urlGambar: obat.gambar,
+                        lebar: 40,
+                        tinggi: 40,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Text(
+                      obat.namaObat,
+                      style: GoogleFonts.poppins(
+                        color: Colors.pink[800],
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
                 ),
               );
             }).toList(),
@@ -493,15 +510,13 @@ class _HalamanFormulirPembelianState extends State<HalamanFormulirPembelian> {
       ),
       child: Row(
         children: [
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Text(
-              _obatDipilih!.gambar,
-              style: const TextStyle(fontSize: 40),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: GambarObat(
+              urlGambar: _obatDipilih!.gambar,
+              lebar: 80,
+              tinggi: 80,
+              fit: BoxFit.cover,
             ),
           ),
           const SizedBox(width: 16),

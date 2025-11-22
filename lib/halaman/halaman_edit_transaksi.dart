@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../model/transaksi.dart';
 import '../service/service_penyimpanan.dart';
+import '../widget/gambar_obat.dart';
 
 class HalamanEditTransaksi extends StatefulWidget {
   final Transaksi transaksi;
@@ -411,15 +412,13 @@ class _HalamanEditTransaksiState extends State<HalamanEditTransaksi> {
       ),
       child: Row(
         children: [
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Text(
-              widget.transaksi.gambarObat,
-              style: const TextStyle(fontSize: 40),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: GambarObat(
+              urlGambar: widget.transaksi.gambarObat,
+              lebar: 80,
+              tinggi: 80,
+              fit: BoxFit.cover,
             ),
           ),
           const SizedBox(width: 16),

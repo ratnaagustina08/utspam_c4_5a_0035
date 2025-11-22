@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../model/obat.dart';
 import '../model/pengguna.dart';
 import '../service/service_penyimpanan.dart';
+import '../widget/gambar_obat.dart';
 import 'halaman_formulir_pembelian.dart';
 import 'halaman_riwayat_pembelian.dart';
 import 'halaman_profil.dart';
@@ -467,21 +468,14 @@ class _HalamanUtamaState extends State<HalamanUtama> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: 120,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [Colors.pink[100]!, Colors.pink[50]!],
-                ),
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
-                ),
-              ),
-              child: Center(
-                child: Text(obat.gambar, style: const TextStyle(fontSize: 50)),
+            GambarObat(
+              urlGambar: obat.gambar,
+              tinggi: 120,
+              lebar: double.infinity,
+              fit: BoxFit.cover,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
               ),
             ),
             Expanded(

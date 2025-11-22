@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../model/transaksi.dart';
 import '../service/service_penyimpanan.dart';
+import '../widget/gambar_obat.dart';
 import 'halaman_edit_transaksi.dart';
 
 class HalamanDetailPembelian extends StatefulWidget {
@@ -287,15 +288,13 @@ class _HalamanDetailPembelianState extends State<HalamanDetailPembelian> {
       ),
       child: Row(
         children: [
-          Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Text(
-              _transaksi.gambarObat,
-              style: const TextStyle(fontSize: 50),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: GambarObat(
+              urlGambar: _transaksi.gambarObat,
+              lebar: 100,
+              tinggi: 100,
+              fit: BoxFit.cover,
             ),
           ),
           const SizedBox(width: 20),
@@ -468,7 +467,7 @@ class _HalamanDetailPembelianState extends State<HalamanDetailPembelian> {
               Text(
                 'Total Pembayaran',
                 style: GoogleFonts.poppins(
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
@@ -476,7 +475,7 @@ class _HalamanDetailPembelianState extends State<HalamanDetailPembelian> {
               Text(
                 'Rp ${formatter.format(_transaksi.totalHarga)}',
                 style: GoogleFonts.poppins(
-                  fontSize: 24,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),

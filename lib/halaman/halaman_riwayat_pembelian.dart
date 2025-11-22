@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import '../model/transaksi.dart';
 import '../service/service_penyimpanan.dart';
+import '../widget/gambar_obat.dart';
 import 'halaman_detail_pembelian.dart';
 
 class HalamanRiwayatPembelian extends StatefulWidget {
@@ -231,15 +232,13 @@ class _HalamanRiwayatPembelianState extends State<HalamanRiwayatPembelian> {
                 ),
                 child: Row(
                   children: [
-                    Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                      child: Text(
-                        transaksi.gambarObat,
-                        style: const TextStyle(fontSize: 30),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(14),
+                      child: GambarObat(
+                        urlGambar: transaksi.gambarObat,
+                        lebar: 60,
+                        tinggi: 60,
+                        fit: BoxFit.cover,
                       ),
                     ),
                     const SizedBox(width: 14),
