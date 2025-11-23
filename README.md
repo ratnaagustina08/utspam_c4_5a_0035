@@ -1,16 +1,11 @@
 # utspam_c4_5a_0035
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<p align="center">
+  <img src="https://github.com/ratnaagustina08/utspam_c4_5a_0035/blob/main/vera/beli.jpg" width="200"/>
+  <img src="https://github.com/ratnaagustina08/utspam_c4_5a_0035/blob/main/vera/beli2.jpg" width="200"/>
+  <img src="https://github.com/ratnaagustina08/utspam_c4_5a_0035/blob/main/vera/detail.jpg" width="200"/>
+  <img src="https://github.com/ratnaagustina08/utspam_c4_5a_0035/blob/main/vera/edit.jpg" width="200"/>
+  <img src="https://github.com/ratnaagustina08/utspam_c4_5a_0035/blob/main/vera/home.jpg" width="200"/>
+  <img src="https://github.com/ratnaagustina08/utspam_c4_5a_0035/blob/main/vera/profil.jpg" width="200"/>
+  <img src="https://github.com/ratnaagustina08/utspam_c4_5a_0035/blob/main/vera/riwayat.jpg" width="200"/>
+</p>
